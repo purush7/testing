@@ -1,0 +1,24 @@
+name: oss cli lint
+on:
+  pull_request:
+    paths:
+      - 'cli/**'
+      - 'pro/cli/**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    env:
+      oss-cli-directory: ./cli-check
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run golangci-lint on oss-cli directory
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.41
+          working-directory: ${{env.oss-cli-directory}
+          only-new-issues: true
+          skip-go-installation: true
+
