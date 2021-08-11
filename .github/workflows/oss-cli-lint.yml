@@ -2,8 +2,7 @@ name: oss cli lint
 on:
   pull_request:
     paths:
-      - 'cli/**'
-      - 'pro/cli/**'
+      - 'cli-check/**'
 
 jobs:
   lint:
